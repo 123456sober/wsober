@@ -20,6 +20,34 @@
             overflow-x: hidden;
         }
 
+        /* 顶部头部横幅 */
+        .header-banner {
+            width: 100%;
+            height: 380px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* 可爱圆润字体 */
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            letter-spacing: 8px; /* 字间距更可爱 */
+            text-shadow: 0 0 20px rgba(0,0,0,0.6), 0 0 5px rgba(0,0,0,0.4);
+            white-space: nowrap;
+        }
+
         /* 导航栏 */
         .navbar {
             background: rgba(255, 255, 255, 0.95);
@@ -294,14 +322,27 @@
                 width: 100%;
                 height: 180px;
             }
+            .header-banner {
+                height: 260px;
+            }
+            .banner-text {
+                font-size: 36px;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- 顶部头部横幅 + 中间大字 -->
+    <div class="header-banner">
+        <img src="blog2.jpg" alt="头部横幅">
+        <div class="banner-text">吴忧の小世界</div>
+    </div>
+
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">星期的博客</div>
+            <div class="logo">吴忧の小世界</div>
             <div class="nav-links">
                 <a href="index.html">首页</a>
                 <a href="#posts">文章</a>
@@ -328,7 +369,7 @@
                 <div class="post-content">
                     <a href="#" class="post-title">计算机网络基础学习笔记（一）</a>
                     <div class="post-date">2026-04-26</div>
-                    <p class="post-excerpt">整理了OSI七层模型和TCP/IP协议栈的核心知识点，方便以后复习。</p>
+                    <p class="post-excerpt">整理OSI七层模型和TCP/IP协议栈核心知识点，方便复习。</p>
                 </div>
             </div>
 
@@ -405,7 +446,7 @@
     </div>
 
     <footer>
-        <p>© 2026 吴星期 | 用代码记录成长</p>
+        <p>© 2026 吴忧 | 用代码记录成长</p>
     </footer>
 
 <!-- live2D 看板娘 -->
@@ -428,6 +469,34 @@
 <script src="https://blog-static.cnblogs.com/files/blogs/693306/waifu-tips.js"></script>
 <script type="text/javascript">initModel()</script>
 <link rel="stylesheet" type="text/css" href="https://blog-static.cnblogs.com/files/blogs/693306/flat-ui.min.css"/>
+
+<!-- 彩虹顶部进度条 -->
+<script type="text/javascript">
+    var loadProcess = function (config) {
+        var count = 0;
+        var id = config.id;
+        var divTxt = "#"+id ;
+        $("body").prepend('<div id="' + id + '" style="width: 0%; height:8px; background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); position:fixed; top:0; left:0; z-index:9999;"></div>' );
+        this.updateProcess = function (percent) {
+            setTimeout(function () { $(divTxt).animate({ width: percent + "%" }) }, ++count * 500);
+            if (percent == 100) {
+                setTimeout(function () {
+                    $(divTxt).hide(500);
+                    setTimeout(function () { $(divTxt).remove() }, 500);
+                }, count * 500 + 800);
+            }
+        };
+    }
+</script>
+<script type="text/javascript">
+    var p = new loadProcess({"id":"loading"});
+    p.updateProcess(30);
+    p.updateProcess(57);
+    p.updateProcess(60);
+    p.updateProcess(70);
+    p.updateProcess(80);
+    p.updateProcess(100);
+</script>
 
 </body>
 </html>
