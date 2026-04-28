@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS端口实验总结 | 学习笔记</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #b8d8f8 0%, #e0f4fb 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .box{
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        h1{
+            color: #629edb;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+        p{
+            line-height: 1.8;
+            color: #555;
+            margin: 1rem 0;
+            text-indent: 2em;
+        }
+        /* 图片统一样式 */
+        img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 1.2rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .link-box{
+            background: #f0f7ff;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            word-break: break-all;
+        }
+        a{
+            color: #629edb;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>CMS 端口修改与端口扫描实验总结</h1>
+
+        <p>本文主要记录了在Windows Server 2003靶机上修改 CMS 管理系统端口，并在Kali Linux攻击机上完成端口扫描、定位服务并成功访问的完整实验过程。</p>
+
+        <p>修改 CMS 端口，在靶机中通过phpStudy 2018控制面板，将 Apache 的 httpd 端口修改为9033，配置完成后应用并保存端口设置。</p>
+        <img src="text1.png">
+
+        <p>使用常规端口扫描进行检测，在 Kali 中使用对应扫描命令进行探测，仅识别出常见开放端口，无法扫描到自定义9033端口，直接访问对应路径失败。</p>
+        <img src="text2.jpeg">
+
+        <p>更换全端口精准扫描方式后，成功探测到9033端口开放且运行 HTTP 服务。通过对应IP加端口的访问形式，顺利进入CMS后台登录页面，完成本次实验全部目标。</p>
+        <img src="text2.png">
+
+        <p>实验结论：修改网站为非默认高位端口后，普通常规扫描只能识别常用端口，无法发现自定义端口服务，必须使用全端口扫描，才能精准探测所有开放端口与运行服务。</p>
+        <img src="text4.jpeg">
+
+        <div class="link-box">
+            原文链接：
+            <a href="https://blog.csdn.net/m0_75023119/article/details/139936144" target="_blank">
+                https://blog.csdn.net/m0_75023119/article/details/139936144
+            </a>
+        </div>
+
+        <br>
+        <a href="index.html">← 返回主页</a>
+    </div>
+</body>
+</html>
