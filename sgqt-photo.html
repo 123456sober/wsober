@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -8,19 +7,26 @@
     <style>
         body {
             font-family: "Microsoft YaHei", sans-serif;
-            background: linear-gradient(135deg, #b8d8f8 0%, #e0f4fb 100%);
+            /* 和主页一致：blog1.jpg 全屏固定背景 */
+            background: url("blog1.jpg") no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
             padding: 2rem;
+            margin: 0;
         }
         .box{
             max-width: 800px;
             margin: 0 auto;
-            background: #fff;
+            /* 半透明白色卡片，和主页一致 */
+            background: rgba(255, 255, 255, 0.88);
             padding: 3rem;
             border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
         }
         h2 {
             text-align: center;
-            color: #629edb;
+            /* 麦穗金，和主页标题同色 */
+            color: #f2d34a;
             margin-bottom: 2rem;
         }
         .img-item {
@@ -30,8 +36,10 @@
             border-radius: 10px;
         }
         a{
-            color: #629edb;
+            /* 链接色也统一成主页蓝色 */
+            color: #4facfe;
             text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -40,14 +48,14 @@
         <h2>十个勤天专属图集记录</h2>
 
         <!-- 在这里无限添加图片 -->
- <img src="sgqt4.jpg"  class="img-item" alt="十个勤天">
-<img src="sgqt5.jpg" class="img-item" alt="十个勤天">
-<img src="sgqt6.jpg" class="img-item" alt="十个勤天">
-<img src="sgqt10.jpg" class="img-item" alt="十个勤天">
-<img src="sgqt11.jpg" class="img-item" alt="十个勤天">
-<img src="sgqt14.jpg"class="img-item" alt="十个勤天">
-<img src="sgqt15.jpg" class="img-item" alt="十个勤天">
-<img src="sgqt16.jpg"class="img-item" alt="十个勤天">
+        <img src="sgqt4.jpg"  class="img-item" alt="十个勤天">
+        <img src="sgqt5.jpg" class="img-item" alt="十个勤天">
+        <img src="sgqt6.jpg" class="img-item" alt="十个勤天">
+        <img src="sgqt10.jpg" class="img-item" alt="十个勤天">
+        <img src="sgqt11.jpg" class="img-item" alt="十个勤天">
+        <img src="sgqt14.jpg"class="img-item" alt="十个勤天">
+        <img src="sgqt15.jpg" class="img-item" alt="十个勤天">
+        <img src="sgqt16.jpg"class="img-item" alt="十个勤天">
 
         <br>
         <div style="text-align:center;">
