@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>十个勤天</title>
+    <title>十个勤天 </title>
     <style>
         body {
             font-family: "Microsoft YaHei", sans-serif;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            /* 背景图：blog1.jpg 全屏固定 */
+            background: url("blog1.jpg") no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
             padding: 2rem;
+            margin: 0;
         }
         .box{
             max-width: 800px;
             margin: 0 auto;
-            background: #fff;
+            /* 半透明白色背景 */
+            background: rgba(255, 255, 255, 0.88);
             padding: 3rem;
             border-radius: 15px;
+            /* 轻微阴影更好看 */
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
         }
+        /* 标题：麦穗金 #f2d34a */
         h1{
-            color: #4facfe;
+            color: #f2d34a;
             margin-bottom: 1rem;
         }
         p{
@@ -36,20 +43,239 @@
             color: #4facfe;
             text-decoration: none;
         }
+
+        /* 按钮样式 */
+        .toggle-btn {
+            background: #4facfe;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .story {
+            display: none;
+            margin-top: 15px;
+        }
+
+        /* 成员应援色 —— 无下划线、可点击、加粗 */
+        .name-click {
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none !important;
+            border: none;
+            outline: none;
+            background: none;
+        }
+        .jiang { color: #fdc76d; }
+        .lu { color: #1E90FF; }
+        .geng { color: #41E9CF; }
+        .hao { color: #FFA6C9; }
+        .yibo { color: #3855a7; }
+        .yuan { color: #A61FC7; }
+        .xiaotong { color: #f2d34a; }
+        .haonan { color: #FF0000; }
+        .shaoxi { color: #FF7890; }
+        .yiheng { color: #00827f; }
+
+        /* 弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            overflow-y: auto;
+        }
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 25px;
+            border-radius: 15px;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            right: 20px; top: 15px;
+            font-size: 26px;
+            cursor: pointer;
+            color: #333;
+        }
+        .modal-img {
+            width: 100% !important;
+            height: auto !important;
+            object-fit: contain !important;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="box">
         <h1>十个勤天：种地吧里的热血少年们</h1>
-        <p>十个勤天，出自综艺《种地吧》。</p>
-        <p>成员：蒋敦豪、鹭卓、李耕耘、李昊、赵一博、卓沅、赵小童、何浩楠、陈少熙、王一珩。</p>
+        <p>十个勤天是一个由十位少年组成的一家位于浙江杭州的农业发展有限公司，其中这十位少年在这之前也有着各自的身份，也有着各自的发光点，今天带着大家来认识一下这十位闪闪发光的少年吧。
+            <span class="name-click jiang" onclick="showModal('jiang')">蒋敦豪</span>、
+            <span class="name-click lu" onclick="showModal('lu')">鹭卓</span>、
+            <span class="name-click geng" onclick="showModal('geng')">李耕耘</span>、
+            <span class="name-click hao" onclick="showModal('hao')">李昊</span>、
+            <span class="name-click yibo" onclick="showModal('yibo')">赵一博</span>、
+            <span class="name-click yuan" onclick="showModal('yuan')">卓沅</span>、
+            <span class="name-click xiaotong" onclick="showModal('xiaotong')">赵小童</span>、
+            <span class="name-click haonan" onclick="showModal('haonan')">何浩楠</span>、
+            <span class="name-click shaoxi" onclick="showModal('shaoxi')">陈少熙</span>和
+            <span class="name-click yiheng" onclick="showModal('yiheng')">王一珩</span>。
+            这十位年轻人不仅有着各自的美丽与才华，还有着令人心动的不凡经历。
+        </p>
+
         <img src="sgqt9.jpg">
-        <p>十个少年，一百九十天种地生活，插秧、收割、养地、经营农场，脚踏实地，真诚热烈。</p>
-        <img src="sgqt12.jpg">
-         <p>少年不惧岁月长，彼方尚有荣光在，十个勤天，永远并肩同行。</p>
-        <img src="photo/sgqt13.jpg">
-        <br>
+
+        <p>
+            <span class="name-click jiang" onclick="showModal('jiang')">蒋敦豪</span>，1995年5月21日出生于新疆维吾尔自治区博尔塔拉蒙古自治州博乐市，中国内地男歌手，毕业于新疆艺术学院音乐系。2016年获得《中国新歌声》全国总冠军，也是乐队旅行新蜜蜂的成员之一，2021年参加过《创造性2021》。
+        在《种地吧》这个节目里面，大哥可以说是主心骨的存在，在背后默默地支持九个弟弟们的一切想法与行动，沉稳可靠，同时又有着幽默可爱的一面。
+        </p>
+        <p>
+            <span class="name-click lu" onclick="showModal('lu')">鹭卓</span>原名路卓豪，1995年11月24日出生于山西省太原市，中国内地男歌手、演员，毕业于四川音乐学院。2017年6月21日，与卓沅一起随ZERO-G正式出道。
+       二哥鹭卓，一个叠满buff的男人，有他存在的地方，就有意外出现，但同时也是一个善良心细的大男孩，热情开放，敏感且细腻，人称“玫瑰花王子”。
+        </p>
+        <p>
+            <span class="name-click geng" onclick="showModal('geng')">李耕耘</span>，原名李命镪，1996年7月15日出生于重庆。2020年北京电影学院毕业后，李耕耘穿梭在各个剧组，但大都败兴而归。同年，把名字改成了李耕耘。
+       
+       三子李耕耘，外号“孤狼”，外表强壮勇猛，确是一颗蛋糕脑袋，拥有极强的反差感，爱撒娇，但同时也给人强大的安全感，具有责任心。
+        </p>
+        <p>
+            <span class="name-click hao" onclick="showModal('hao')">李昊</span>1997年7月2日出生于广东省佛山市顺德区，中国香港男歌手，毕业于暨南大学。2017年参加过《明日之子》，2020年参加《少年之名》。同时也具有一个导演梦、演员梦。
+        李昊，外号“利好”，喜欢小动物，已经养了好几只小狗，甜妹组的一员，青春阳光，可爱软糯，少年感十足。
+        </p>
+            <p>
+            <span class="name-click yibo" onclick="showModal('yibo')">赵一博</span>1998年11月6日出生于山西省长治市，毕业于上海海事大学商船学院轮机工程系，中国内地男演员。2020年，参与职场文化代际互动真人秀节目《花样实习生》，从而进入演艺圈。
+       赵一博，后陡门公主，智性恋的天花板，又称“赵啾咪”，甜度满分，有耐心性格温和，后陡门至今流传着一句话叫“一博领进门，爱上所有人”，公主实在貌美。
+        </p>
+        <p>
+            <span class="name-click yuan" onclick="showModal('yuan')">卓沅</span>，原名张钥沅，1999年6月16日出生，中国内地男歌手，男子演唱团体ZERO-G 成员。
+卓沅，后陡门“摄政王”兼“妲己”，甜妹组代表之一，内核强大，最开始看可能平平无奇，但了解了他之后，就会发现他了解每个兄弟的特点并且能合理安排大家的工作。
+
+        </p>
+        <p>
+            <span class="name-click xiaotong" onclick="showModal('xiaotong')">赵小童</span>山东青岛人，出生于1999年12月20日，毕业于中央戏剧学院2018级话剧影视表演2班， 曾参演电视剧《夏花》、话剧《欲望花园》《地洞》《北京地貌》《My God》。
+赵小童，后陡门“力王”的存在，也是一个“犟种”，口头禅就是“没事”，但其实内心坚强细腻柔软，浪漫小王子般的存在。
+
+        </p>
+        <p>
+            <span class="name-click haonan" onclick="showModal('haonan')">何浩楠</span>原名何懿俊，2000年11月6日出生于浙江丽水。2020年，他首次亮相《少年之名》的舞台。2021年，参加了《创造营2021》。2022年，参演了的短剧《限时恋人》并演唱了片尾曲《剩女骑士》。
+
+何浩楠，又名何小狗，后陡门车身，拥有六本证的男人，有点小自恋、臭屁，爱耍帅，后陡门卧龙的存在，但能充分发挥他的浙商天赋，不要小瞧他哦。
+        </p>
+        <p>
+            <span class="name-click shaoxi" onclick="showModal('shaoxi')">陈少熙</span>原名陈波翰，2022年12月3日出生于甘肃省兰州市，2023年毕业于中国戏曲学院昆曲表演专业，中国内地男演员，同时也当过CV，名陈然之野。
+            陈少熙，后陡门“莽夫”，内心却不如外表所展示的那般强大，柔软孤独，但在兄弟们的陪伴影响下逐渐敞开内心，表达自我，另外，身为禾伙人必须知道的一件事就是陈少熙失恋了喜欢在厕所听周杰伦的歌啦。
+        </p>
+        <p>
+            <span class="name-click yiheng" onclick="showModal('yiheng')">王一珩</span>2004年8月27日出生于内蒙古呼和浩特。2018年，他参加了呼市地下八英里选拔，荣获第八名，并在2019年将说唱音乐转为R&B。同年，他改名为OnesD，并成立了厂牌MultiGame。
+            王一珩，小名王多多，后陡门最小的弟弟，汉堡脑袋，平时在节目中表现的都是天真、可爱，又带点调皮，但也能担起责任，完美的完成任务，年纪轻轻便经历丰富，知世故而不世故。
+        </p>
+
+        <p>他们用自己的潜力和努力不断证明着年龄只是数字。没有人会想象到，背后的拼搏与汗水让他们在短时间内积累了如此多的粉丝
+        十个少年，一百九十天种地生活，插秧、收割、养地、经营农场，脚踏实地，真诚热烈
+        少年不惧岁月长，彼方尚有荣光在，十个勤天，永远并肩同行。</p>
+
+        <!-- 点击展开按钮 -->
+        <button class="toggle-btn" onclick="toggleStory()">我怎么认识他们 +</button>
+        <div class="story" id="story">
+            <p>认识他们是在快手上看到一群人在节目上种地开始看《种地吧》。</p>
+            <img src="w.jpg">
+            <p>在这里面记录这群真诚、热血、坚韧、勇敢、团结的少年用自己曾经稚嫩的双手把荒芜变成了有爱的家，亲手刷了每一面墙，亲手贴了每一块砖瓦，亲手制作了每一张桌椅，亲手种下了每一朵花；篮球架上缠玫瑰花和水塘旁搭秋千有多浪漫；100多只动物、3万多颗蔬菜、60多吨水稻、30吨有机肥、4千盆玫瑰；普通农户的蔬菜根本进不了商超；10个少年骑着共享单车、穿着几十块的工作服去建立了属于自己的公司；一个大棚的搭建、一个羊圈的搭建、一个鸡舍鸭舍的搭建都需要不断摸索反反复复；村里各处的流浪狗最终都有了自己的家；人是会被累晕的；下雪也需要在冰水里通沟…他们最终由陌生人变为了家人； 每个人都是这个家不可或缺的一部分； 他们自由而浪漫； 即使没有片酬并且负债累累，也要在520的夜空燃放属于自己的烟花。真的很可惜没有在2022年认识十个勤天，但是现在也不晚，真的好喜欢这种慢综艺，好喜欢他们。他们做了一件件有意义的事情</p>
+            <img src="sgqt13.jpg">
+            <img src="sgqt12.jpg">
+        </div>
+
+        <br><br>
+        <!-- 图片合集跳转链接 -->
+        <a href="sgqt-photo.html" style="color: #4facfe; font-weight: bold;">👉 点击查看图片合集</a>
+        <br><br>
         <a href="index.html">← 返回主页</a>
     </div>
+
+    <!-- 弹窗 -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImg" class="modal-img">
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+    <script>
+        // 展开/收起故事
+        function toggleStory() {
+            let story = document.getElementById("story");
+            if (story.style.display === "block") {
+                story.style.display = "none";
+            } else {
+                story.style.display = "block";
+            }
+        }
+
+        // 每个人的介绍 + 对应图片
+        const data = {
+            jiang: {
+                img: "s1.png",
+                text: "老大蒋敦豪，一般叫他大哥或董事长，歌手，提出创建十个勤天公司，性格温和但其实很带劲，有一颗摇滚魂，有担当，有公信力，很包容，经常被弟弟们喊来“断案”，第一季是养殖组的，主养湖羊，亲自接生小羊，曾经从羊妈妈肚子里掏出了濒临死亡的小羊，并和58一起呵护救活，取名“晴天”（后陡门长公主)，非常疼爱呵护。大哥种地前是好声音冠军，组了个乐队叫旅行新蜜蜂，第二季也养了蜜蜂，所以常用蜜蜂元素指代。"
+            },
+            lu: {
+                img: "s2.png",
+                text: "老二鹭卓，常被叫二哥，后陡门爱神，歌手，性格开朗大大咧咧，但是非常会照顾弟弟们，有非常多有爱的日常，每天坚持给兄弟们早起做早饭。乐天派灵魂，因为种了玫瑰花，也被叫玫瑰花王子，常用玫瑰花元素指代。情感高，有大局观，虽然好像总是闯祸，但其实是小福星，做事非常细腻周到，真诚有爱，怕虫子。狗塑，被叫大狗。"
+            },
+            geng: {
+                img: "s3.png",
+                text: "老三李耕耘，常被称呼为三子，人如其名，非常会种地，第一季前期的主心骨担当，非常靠谱啥都会干，天生土木双灵根，种啥啥活，第一季基建组组长，带领基建组做篱笆、贴瓷砖建设美好家园。有一颗军魂，自称孤狼，外冷内热，会猛男落泪，爱健身，后陡门力王之一，养过小兔子，爱吃小蛋糕。"
+            },
+            hao: {
+                img: "s4.png",
+                text: "老四李昊，禾伙人常称呼为昊昊，白白净净，十个勤天CFO，管账，虽然在后陡门管着几毛钱的账，但其实是真少爷。会给兄弟们拍照记录日常，是狗狗神来的，养了后陡门太子红包，还收留了很多流浪狗，建了狗狗乐园，基建组成员，拥有软萌口音，但有头脑，善控场，偶像周星驰，有导演梦。"
+            },
+            yibo: {
+                img: "s5.png",
+                text: "老五赵一博，高颜值的聪明理工男，海事大学的好学生，善于开会控场，做会议纪要，和7同为公司秘书处成员。精于自动化设备和焊接等技术，被称为全能赵工，一席紫衣焊将战袍出圈。第一季养殖组，除湖羊外主养小鸡，第二季升级滴喷灌系统，脑子好使会扇羊。"
+            },
+            yuan: {
+                img: "s6.png",
+                text: "老六卓沅，和老二作为一组原生关系进来(多年练习生挚友)，毒舌甜“妹”，善于靠近你-温暖你-“奴役”你，专注努力，从种地小白到一心钻研土地种出数种果蔬，代表有水培生菜、草莓、郁金香等。体贴暖心，笑着跳舞非常有魅力，被称为十个勤天摄政王，CEO，情绪稳定，有坚韧柔和的性格底色，猫塑。"
+            },
+            xiaotong: {
+                img: "s7.png",
+                text: "老七赵小童，喜欢小王子的浪漫主义者，后陡门做饭的神，秘书处成员，有非常强大稳定的内核，后陡门力王之一。热情与洒脱并存，喜欢citywalk，很帅很正很幽默，成熟稳重，踏实能干，自由热烈，自成世界又海纳百川，六边形战士，喜欢星星元素。率先喊出三农口号，不吝付出。"
+            },
+            haonan: {
+                img: "s8.png",
+                text: "老八何浩楠，被称为臭屁小狗，车神，拥有多本驾驶证，江浙沪潮男，又称村少。不会说但一定会做，总是默默关心和帮助大家，钝感力很强但又很细心，有浙商头脑，在后陡门养过鸭子和鹅，第一季他亲手打造的鸭舍成了后陡门标志物。"
+            },
+            shaoxi: {
+                img: "s9.png",
+                text: "老九陈少熙，具有野性和反叛精神的后陡门余占鳌，很有性张力，被称为直女天菜和莽夫，食量大，力气大。从小学戏曲，在哥们面前慢慢学会表达爱，很中二热血，某种方面也非常浪漫，常常高喊自由逐风，鲜活与无畏并存。养过鱼和虾，被称为“少塘主”。"
+            },
+            yiheng: {
+                img: "s10.png",
+                text: "弟弟王一珩，被所有人称为弟弟呵护，但是却非常成熟有担当能扛事儿，也很聪明，18岁就跟着哥几个种地，能吃苦，性格好，天生rnb嗓音，从小就想当歌手，很小年纪就有魄力地组建了自己的厂牌。现在还是后陡门潮牌服饰的董事长，九个哥哥宠，在家横着走，团宠。"
+            }
+        };
+
+        // 显示弹窗
+        function showModal(person) {
+            document.getElementById('modalImg').src = data[person].img;
+            document.getElementById('modalText').innerText = data[person].text;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        // 关闭弹窗
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
