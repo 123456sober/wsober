@@ -76,6 +76,23 @@
             display: block;
         }
 
+       /* 博客时间戳 时分秒 加大字体 */
+.blog-time {
+    position: absolute;
+    bottom: 160px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 60px;
+    font-weight: 500;
+    backdrop-filter: blur(6px);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    white-space: nowrap;
+    letter-spacing: 1px;
+}
         .banner-text {
             position: absolute;
             top: 50%;
@@ -435,6 +452,10 @@
             color: #fff;
             transform: scale(1.1);
         }
+        .waifu-tool-btn:active {
+            transform: scale(0.9);
+            background: #3b9af0;
+        }
     </style>
 </head>
 <body>
@@ -469,7 +490,8 @@ function closeStart(){
 </script>
 
     <div class="header-banner">
-        <img src="blog1.jpg" alt="头部横幅">
+        <img src="blog4.png" alt="头部横幅">
+        <div class="blog-time" id="blogTime"></div>
     </div>
 
     <nav class="navbar">
@@ -631,10 +653,31 @@ function hideWaifu() {
     }, 1500);
 }
 
-// 载入欢迎
+// ==============================
+// 博客运行时间 天 时:分:秒 实时刷新
+// ==============================
+const blogStartTime = new Date("2026-04-27 00:00:00");
+
+function updateBlogTime() {
+    const now = new Date();
+    let diff = Math.floor((now - blogStartTime) / 1000);
+
+    const d = Math.floor(diff / 86400);
+    diff %= 86400;
+    const h = Math.floor(diff / 3600).toString().padStart(2, '0');
+    const m = Math.floor((diff % 3600) / 60).toString().padStart(2, '0');
+    const s = (diff % 60).toString().padStart(2, '0');
+
+    document.getElementById("blogTime").innerText = `已陪伴：${d}天 ${h}:${m}:${s}`;
+}
+
+setInterval(updateBlogTime, 1000);
+
+// 页面加载完成执行
 window.onload = () => {
     setTimeout(() => showTip('(●\'◡\'●)ﾉ 欢迎回来！^_^o'), 1000);
-}
+    updateBlogTime();
+};
 </script>
 
 </body>
