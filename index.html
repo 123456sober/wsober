@@ -22,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* ========== 专属开始页面（图片完整显示） ========== */
+        /* ========== 专属开始页面（图片 全屏铺满 自适应） ========== */
         #startPage {
             position: fixed;
             top: 0;
@@ -35,9 +35,8 @@
         #startPage .bg-img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* 改成contain，保证图片完整显示不变形 */
+            object-fit: cover; /* 全屏铺满 + 自适应 + 不变形 */
             display: block;
-            background: #fff;
         }
         /* 奶白色按钮 + 浅棕描边 */
         #startPage .enter-btn {
@@ -73,7 +72,7 @@
         .header-banner img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             display: block;
         }
 
@@ -440,9 +439,8 @@
 </head>
 <body>
 
-<!-- ========== 开始页面（图片完整显示） ========== -->
+<!-- ========== 开始页面（图片完整自适应全屏） ========== -->
 <div id="startPage">
-    <!-- 把这里换成你的开场图片名字 -->
     <img class="bg-img" src="me2.png" alt="开始页背景">
     <button class="enter-btn" onclick="closeStart()">一同奔赴 Worry Free の世界</button>
 </div>
@@ -480,7 +478,6 @@ function closeStart(){
             <div class="nav-links">
                 <a href="index.html">首页</a>
                 <a href="#posts">文章</a>
-                <a href="about.html">建站历程</a>
             </div>
         </div>
     </nav>
