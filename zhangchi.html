@@ -7,22 +7,31 @@
     <style>
         body {
             font-family: "Microsoft YaHei", sans-serif;
-            background: linear-gradient(135deg, #b8d8f8 0%, #e0f4fb 100%);
+            background: url("z1.jpg") no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
             padding: 2rem;
+            margin: 0;
         }
         .box{
             max-width: 800px;
             margin: 0 auto;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.85);
             padding: 3rem;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
         h1{
-            color: #629edb;
+            color: #b82e2e;
             margin-bottom: 1rem;
             text-align: center;
+        }
+        h2 {
+            font-size: 1.3em;
+            color: #222;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #ddd;
         }
         p{
             line-height: 1.8;
@@ -30,19 +39,48 @@
             margin: 1rem 0;
             text-indent: 2em;
         }
+
+        /* 可点击文字 */
+        .click-text{
+            cursor: pointer;
+            color: #b82e2e;
+            font-weight: bold;
+        }
+
+        /* 统一横排：作品、帅哥都并排 */
+        .work-container, .dog-container {
+            display: none;
+            justify-content: center;
+            gap: 0.3rem;
+            margin: 1.5rem 0;
+        }
+        .work-card, .dog-card {
+            width: 32%;
+            text-align: center;
+        }
+        .work-img, .dog-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .work-title, .dog-title {
+            margin-top: 0.6rem;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
         img{
             max-width: 50%;
             border-radius: 10px;
             margin: 1.2rem auto;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             display: block;
         }
         a{
             color: #629edb;
             text-decoration: none;
-        }
-        a:hover{
-            text-decoration: underline;
         }
         .more-btn {
             display: inline-block;
@@ -52,36 +90,137 @@
             color: #fff;
             border-radius: 20px;
         }
-        .more-btn:hover {
-            background: #4facfe;
-            text-decoration: none;
+
+        /* 弹窗 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #fff;
+            max-width: 600px;
+            width: 90%;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            line-height: 1.8;
+        }
+        .close-btn {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>张翅：从群演到舞台的温柔少年</h1>
-        <p>看了许许多多的短剧，大多只是流于外表、偏向颜值，而认识张翅，是完全不一样的感受。初次留意到你，大概是在2025年12月，偶然观看《双向欲臣》这部作品，那时只觉得，这个少年干净又帅气，让人一眼记住。</p>
-        <img src="zc1.png" alt="">
-        <p>后来在上个学期，偶然点开你的直播，温柔的氛围满满的女友视角，安静又治愈。这个学期里，慢慢看了很多场你的直播，也一点点更加了解真实、鲜活的你。</p>
+<div class="box">
+    <h1>张翅：从群演到舞台的温柔少年</h1>
+    
+    <p>张翅，2001年10月22日出生于河南省，是中国内地优秀的影视男演员。早在高中时期，你便坚定了演员的理想与方向，从横店普通群演一步步沉淀、打拼，慢慢踏入演艺圈，脚踏实地走好每一段来时路。</p>
 
-        <p>张翅，2001年10月22日出生于河南省，是中国内地优秀的影视男演员。早在高中时期，你便坚定了演员的理想与方向，从横店普通群演一步步沉淀、打拼，慢慢踏入演艺圈，脚踏实地走好每一段来时路。</p>
+    <p>生活里的你温柔又细腻，养了一只可爱的白色西高地小狗，取名“帅哥”，常常在社交平台分享小狗的日常，温柔又治愈；闲暇之余，还会亲自下厨，分享生活里的烟火气，真实又温柔。</p>
 
-        <p>生活里的你温柔又细腻，养了一只可爱的白色西高地小狗，取名“帅哥”，常常在社交平台分享小狗的日常，温柔又治愈；闲暇之余，还会亲自下厨，分享生活里的烟火气，真实又温柔。</p>
+    <img src="z4.jpg" alt="">
 
-        <p>代表作丰富多样，先后出演《那年冬至》《一家三口在同班2》《抄家后她娇入骨，战神王爷偏要宠》《暗恋是颗星星糖》《走过路过之原来他也喜欢我》等作品，不断打磨演技，突破自己。</p>
+    <!-- 点击文字查看帅哥照片 -->
+    <p class="click-text" onclick="showDogImg()">点击查看帅哥的照片</p>
 
-        <p>从默默无闻的群演，到被越来越多人看见和喜欢，一路默默努力，温柔且坚定。愿往后的日子里，翅翅永远被温柔以待，不被恶意打扰，保持热爱，奔赴山海。</p>
-
-        <p>愿你平安顺遂，开开心心，健健康康，星光璀璨，前路漫漫亦灿灿，会有越来越多的人喜欢你、守护你。#向全世界安利张翅#</p>
-
-        <!-- 关键：跳转图片合集页面的链接 -->
-        <div style="text-align:center;margin:2rem 0;">
-            <a href="zhangchi-img.html" target="_blank" class="more-btn">查看更多张翅图集记录</a>
+    <!-- 帅哥照片：三张横排 -->
+    <div class="dog-container" id="dogBox">
+        <div class="dog-card">
+            <img src="z5.jpg" class="dog-img">
+            <div class="dog-title">帅哥 1</div>
         </div>
-
-        <br>
-        <a href="index.html">← 返回主页</a>
+        <div class="dog-card">
+            <img src="z6.jpg" class="dog-img">
+            <div class="dog-title">帅哥 2</div>
+        </div>
+        <div class="dog-card">
+            <img src="z7.jpg" class="dog-img">
+            <div class="dog-title">帅哥 3</div>
+        </div>
     </div>
+
+    <h2>棒棒的翅翅</h2>
+    <p class="click-text" onclick="showWorkImg()">代表作丰富多样，先后出演多部作品，不断打磨演技，突破自己。</p>
+    
+    <!-- 作品照片：三张横排 -->
+    <div class="work-container" id="workBox">
+        <div class="work-card">
+            <img src="z1.png" class="work-img" onclick="openModal(0)">
+            <div class="work-title">暗恋是颗星星糖</div>
+        </div>
+        <div class="work-card">
+            <img src="z2.png" class="work-img" onclick="openModal(1)">
+            <div class="work-title">一家三口在同班2</div>
+        </div>
+        <div class="work-card">
+            <img src="z3.png" class="work-img" onclick="openModal(2)">
+            <div class="work-title">那年冬至</div>
+        </div>
+    </div>
+
+    <p>参加中巴建交75周年丝绸之路城市联盟·绿地毯计划活动。愿以绿色为纽带，共促生态环保与可持续发展，续写中巴友好合作新篇章。</p>
+
+    <h2>直播</h2>
+    <p>翅煲们问翅翅MBTI是什么，翅翅说是wacb（我爱翅煲）；</p>
+
+    <h2>认识你</h2>
+    <p>看了许许多多的短剧，大多只是流于外表、偏向颜值，而认识张翅，是完全不一样的感受。初次留意到你，大概是在2025年12月，偶然观看《双向欲臣》这部作品，那时只觉得，这个少年干净又帅气，让人一眼记住。
+    <img src="zc1.png" alt="">
+    后来在上个学期，偶然点开你的直播，温柔的氛围满满的女友视角，安静又治愈。这个学期里，慢慢看了很多场你的直播，也一点点更加了解真实、鲜活的你。</p>
+
+    <h2>祝福</h2>
+    <p>从默默无闻的群演，到被越来越多人看见和喜欢，一路默默努力，温柔且坚定。愿往后的日子里，翅翅永远被温柔以待，不被恶意打扰，保持热爱，奔赴山海
+    愿你平安顺遂，开开心心，健健康康，星光璀璨，前路漫漫亦灿灿，会有越来越多的人喜欢你、守护你。#向全世界安利张翅#</p>
+    
+    <div style="text-align:center;margin:2rem 0;">
+        <a href="zhangchi-img.html" target="_blank" class="more-btn">查看更多张翅图集记录</a>
+    </div>
+
+    <br>
+    <a href="index.html">← 返回主页</a>
+</div>
+
+<div class="modal" id="workModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <p id="modalText"></p>
+    </div>
+</div>
+
+<script>
+    const workInfo = [
+        `《暗恋是颗星星糖》是由傅逸聪执导，张翅、至春禾主演的青春校园题材短剧。该剧以大学校园为背景，讲述高中时期错过的暗恋对象意外重逢后双向奔赴的爱情故事。上线首日以5923万热度空降短剧日榜。`,
+        `《一家三口在同班2》是由王一夏执导，王小亿、王译磊、张翅主演的短剧，预约量突破330万。`,
+        `《那年冬至》讲述冬至这天，南昭宁与残疾的京家二少爷京烁闪婚，婚后互相救赎的故事。`
+    ];
+
+    function showWorkImg(){
+        document.getElementById('workBox').style.display = 'flex';
+    }
+    function showDogImg(){
+        document.getElementById('dogBox').style.display = 'flex';
+    }
+
+    function openModal(index) {
+        document.getElementById('modalText').innerText = workInfo[index];
+        document.getElementById('workModal').style.display = 'flex';
+    }
+    function closeModal() {
+        document.getElementById('workModal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+        const modal = document.getElementById('workModal');
+        if (event.target === modal) closeModal();
+    }
+</script>
 </body>
 </html>
