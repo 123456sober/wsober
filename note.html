@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>笔记编辑 | 吴忧の小世界</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+body {
+    background: linear-gradient(135deg, #b8d8f8 0%, #e0f4fb 100%);
+    min-height: 100vh;
+    padding: 30px 15px;
+}
+.note-box {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+h2 {
+    color: #4facfe;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+.btn {
+    padding: 8px 20px;
+    background: #4facfe;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn:hover {
+    background: #00f2fe;
+}
+#noteInput {
+    width: 100%;
+    height: 65vh;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.8;
+    resize: none;
+    outline: none;
+}
+.tip-text {
+    margin-top: 12px;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="note-box">
+    <h2>📝 专属笔记本</h2>
+    <div class="btn-group">
+        <button class="btn" onclick="saveNote()">手动保存</button>
+        <button class="btn" onclick="exportNote()">导出文件</button>
+        <button class="btn" onclick="backHome()">返回首页</button>
+    </div>
+    <textarea id="noteInput" placeholder="在这里写笔记、待办、日记、学习记录...随时修改自动保存"></textarea>
+    <div class="tip-text">自动实时保存，关闭页面再打开内容还在，可无限次编辑</div>
+</div>
+
+<script>
+// 读取本地保存的笔记
+function loadNote() {
+    return localStorage.getItem('myNoteData') || '';
+}
+
+// 手动保存
+function saveNote() {
+    let content = document.getElementById('noteInput').value;
+    localStorage.setItem('myNoteData', content);
+    alert('✅ 笔记已保存！');
+}
+
+// 实时自动保存（边写边存）
+document.getElementById('noteInput').addEventListener('input', function(){
+    localStorage.setItem('myNoteData', this.value);
+});
+
+// 导出为TXT
+function exportNote() {
+    let content = document.getElementById('noteInput').value;
+    if(!content.trim()){
+        alert('笔记为空，无法导出');
+        return;
+    }
+    let date = new Date().toISOString().slice(0,10);
+    let fileName = `吴忧笔记_${date}.txt`;
+    let blob = new Blob([content], {type:'text/plain;charset=utf-8'});
+    let a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = fileName;
+    a.click();
+}
+
+// 返回首页
+function backHome() {
+    window.location.href = 'index.html';
+}
+
+// 页面加载自动载入笔记
+window.onload = function(){
+    document.getElementById('noteInput').value = loadNote();
+};
+</script>
+
+</body>
+</html>
