@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>worry free记</title>
-    <!-- 引入阿里巴巴普惠体 -->
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_3316063_9cd0n7n8r6.css">
     <style>
         * {
@@ -22,7 +21,6 @@
             overflow-x: hidden;
         }
 
-        /* ========== 专属开始页面（图片 全屏铺满 自适应） ========== */
         #startPage {
             position: fixed;
             top: 0;
@@ -35,25 +33,24 @@
         #startPage .bg-img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 全屏铺满 + 自适应 + 不变形 */
+            object-fit: cover;
             display: block;
         }
-        /* 奶白色按钮 + 浅棕描边 */
         #startPage .enter-btn {
             position: absolute;
             bottom: 100px;
             left: 50%;
             transform: translateX(-50%);
             padding: 15px 45px;
-            background: #fff8f0; /* 奶白色 */
-            color: #6b4f3a; /* 深咖色文字 */
-            border: 2px solid #c4a88e; /* 浅棕描边 */
+            background: #fff8f0;
+            color: #6b4f3a;
+            border: 2px solid #c4a88e;
             border-radius: 50px;
             font-size: 17px;
             letter-spacing: 1px;
             cursor: pointer;
             box-shadow: 0 4px 18px rgba(0,0,0,0.1);
-            font-family: "AlibabaPuHuiTi-Regular", "PingFang SC", sans-serif; /* 阿里巴巴普惠体 */
+            font-family: "AlibabaPuHuiTi-Regular", "PingFang SC", sans-serif;
         }
         #startPage .enter-btn:hover {
             background: #fff;
@@ -61,7 +58,6 @@
             box-shadow: 0 6px 22px rgba(0,0,0,0.15);
         }
 
-        /* 顶部头部横幅 */
         .header-banner {
             width: 100%;
             max-height: 380px;
@@ -76,23 +72,22 @@
             display: block;
         }
 
-       /* 博客时间戳 时分秒 加大字体 */
-.blog-time {
-    position: absolute;
-    bottom: 160px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0,0,0,0.3);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-size: 60px;
-    font-weight: 500;
-    backdrop-filter: blur(6px);
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    white-space: nowrap;
-    letter-spacing: 1px;
-}
+        .blog-time {
+            position: absolute;
+            bottom: 160px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 60px;
+            font-weight: 500;
+            backdrop-filter: blur(6px);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            white-space: nowrap;
+            letter-spacing: 1px;
+        }
         .banner-text {
             position: absolute;
             top: 50%;
@@ -107,7 +102,6 @@
             white-space: nowrap;
         }
 
-        /* 导航栏 */
         .navbar {
             background: rgba(255, 255, 255, 0.95);
             padding: 1rem 2rem;
@@ -171,7 +165,6 @@
             width: 100%;
         }
 
-        /* 主容器 */
         .main-container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -187,7 +180,6 @@
             gap: 1.5rem;
         }
 
-        /* 文章卡片 */
         .post-card {
             background: rgba(255, 255, 255, 0.98);
             border-radius: 15px;
@@ -241,7 +233,6 @@
             overflow: hidden;
         }
 
-        /* 侧边栏 */
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -323,7 +314,7 @@
             gap: 6px;
         }
 
-        .sidebar-section h3::before {
+        .s1 h3::before {
             content: "📢";
         }
 
@@ -363,6 +354,36 @@
             color: #999;
         }
 
+        .note-textarea {
+            width: 100%;
+            height: 180px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 12px;
+            resize: none;
+            outline: none;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            background: rgba(255,255,255,0.7);
+        }
+        .note-buttons {
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+        }
+        .note-save-btn, .note-export-btn {
+            flex: 1;
+            padding: 6px 10px;
+            background: #4facfe;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .note-save-btn:hover, .note-export-btn:hover {
+            background: #00f2fe;
+        }
+
         footer {
             text-align: center;
             padding: 2rem;
@@ -387,7 +408,6 @@
             }
         }
 
-        /* 彩虹进度条 */
         #loading-bar{
             width:0%;
             height:8px;
@@ -398,7 +418,6 @@
             transition:width .4s ease;
         }
 
-        /* 看板娘整体容器 */
         #waifu-box {
             position: fixed;
             right: 20px;
@@ -409,7 +428,6 @@
             align-items: flex-end;
         }
 
-        /* 提示气泡 */
         .waifu-tips {
             width: 260px;
             margin-bottom: 15px;
@@ -426,7 +444,6 @@
             opacity: 1;
         }
 
-        /* 侧边工具栏 */
         .waifu-tool {
             display: flex;
             flex-direction: column;
@@ -460,13 +477,11 @@
 </head>
 <body>
 
-<!-- ========== 开始页面（图片完整自适应全屏） ========== -->
 <div id="startPage">
     <img class="bg-img" src="me2.png" alt="开始页背景">
     <button class="enter-btn" onclick="closeStart()">一同奔赴 Worry Free の世界</button>
 </div>
 
-<!-- 彩虹顶部进度条 -->
 <div id="loading-bar"></div>
 <script>
 let arr = [30,57,60,70,80,100];
@@ -483,14 +498,13 @@ function loadBar(){
 }
 loadBar();
 
-// 关闭开始页进入主页
 function closeStart(){
     document.getElementById('startPage').style.display = 'none';
 }
 </script>
 
     <div class="header-banner">
-        <img src="blog4.png" alt="头部横幅">
+        <img src="blog4.png" alt="header">
         <div class="blog-time" id="blogTime"></div>
     </div>
 
@@ -562,13 +576,27 @@ function closeStart(){
                         <div class="stat-label">分类</div>
                     </div>
                 </div>
-                <!-- 改成a标签，点击跳转me.html -->
                 <a href="me.html" class="sidebar-btn" style="text-decoration:none;">Follow Me</a>
             </div>
 
-            <div class="sidebar-card sidebar-section">
+            <div class="sidebar-card sidebar-section s1">
                 <h3>公告</h3>
                 <p style="color:#666; font-size:0.95rem;">欢迎来到我的个人博客，这里记录我的学习笔记和生活碎碎念~</p>
+            </div>
+
+            <div class="sidebar-card sidebar-section">
+                <h3>👀 访客记录</h3>
+                <div style="text-align:left; font-size:0.95rem; line-height:1.8;">
+                    <p>总访问量：<span id="totalVisits" style="color:#4facfe; font-weight:bold;">0</span></p>
+                    <p>今日访问：<span id="todayVisits" style="color:#4facfe; font-weight:bold;">0</span></p>
+                    <p>当前在线：<span id="onlineCount" style="color:#4facfe; font-weight:bold;">1</span></p>
+                </div>
+            </div>
+
+            <div class="sidebar-card sidebar-section">
+               <h3>📝 我的笔记</h3>
+                 <p style="color:#666; font-size:0.9rem; margin:10px 0;">随时进入编辑，自动保存不丢失</p>
+                 <button class="note-save-btn" onclick="window.location.href='note.html'" style="width:100%;">进入笔记编辑页</button>
             </div>
 
             <div class="sidebar-card sidebar-section">
@@ -595,7 +623,6 @@ function closeStart(){
         <p>© 2026 吴忧 | 用代码记录成长</p>
     </footer>
 
-<!-- 新版多按钮看板娘 -->
 <div id="waifu-box">
     <div class="waifu-tips"></div>
     <div class="waifu-tool">
@@ -612,7 +639,6 @@ function closeStart(){
 <script>
 const tipEl = document.querySelector('.waifu-tips');
 
-// 你要的自定义文案
 const tips = {
     talk: [
         '今天的你也辛苦啦！',
@@ -631,21 +657,18 @@ const index = {
     quote: 0
 };
 
-// 显示提示气泡
 function showTip(text) {
     tipEl.innerText = text;
     tipEl.classList.add('show');
     setTimeout(() => tipEl.classList.remove('show'), 3000);
 }
 
-// 循环切换
 function tipCycle(type) {
     const arr = tips[type];
     showTip(arr[index[type]]);
     index[type] = (index[type] + 1) % arr.length;
 }
 
-// 关闭按钮
 function hideWaifu() {
     showTip('你要离开我了吗');
     setTimeout(() => {
@@ -653,30 +676,97 @@ function hideWaifu() {
     }, 1500);
 }
 
-// ==============================
-// 博客运行时间 天 时:分:秒 实时刷新
-// ==============================
 const blogStartTime = new Date("2026-04-27 00:00:00");
-
 function updateBlogTime() {
     const now = new Date();
     let diff = Math.floor((now - blogStartTime) / 1000);
-
     const d = Math.floor(diff / 86400);
     diff %= 86400;
     const h = Math.floor(diff / 3600).toString().padStart(2, '0');
     const m = Math.floor((diff % 3600) / 60).toString().padStart(2, '0');
     const s = (diff % 60).toString().padStart(2, '0');
-
     document.getElementById("blogTime").innerText = `已陪伴：${d}天 ${h}:${m}:${s}`;
 }
-
 setInterval(updateBlogTime, 1000);
 
-// 页面加载完成执行
+function initVisit() {
+    let today = new Date().toISOString().split('T')[0];
+    let lastDay = localStorage.getItem('lastVisitDay') || today;
+    let total = Number(localStorage.getItem('totalVisits') || 0);
+    let todayNum = Number(localStorage.getItem('todayVisits') || 0);
+    if (lastDay !== today) {
+        todayNum = 0;
+        localStorage.setItem('lastVisitDay', today);
+    }
+    if (!sessionStorage.getItem('isVisited')) {
+        total++;
+        todayNum++;
+        localStorage.setItem('totalVisits', total);
+        localStorage.setItem('todayVisits', todayNum);
+        sessionStorage.setItem('isVisited', '1');
+    }
+    document.getElementById('totalVisits').innerText = total;
+    document.getElementById('todayVisits').innerText = todayNum;
+}
+
+// 笔记保存/读取/导出
+function saveNote(){
+    let val = document.getElementById('myNote').value;
+    localStorage.setItem('myBlogNote', val);
+    showTip('笔记已保存！');
+}
+function loadNote(){
+    let note = localStorage.getItem('myBlogNote') || '';
+    document.getElementById('myNote').value = note;
+}
+function exportNote(){
+    let content = document.getElementById('myNote').value;
+    if(!content.trim()){
+        showTip('笔记为空，无法导出');
+        return;
+    }
+    // 文件名：我的笔记_2026-05-07.txt
+    let date = new Date().toISOString().slice(0,10);
+    let fileName = `我的笔记_${date}.txt`;
+
+    let blob = new Blob([content], {type:'text/plain;charset=utf-8'});
+    let url = URL.createObjectURL(blob);
+
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = fileName; // 下载文件名
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    showTip('已导出，可选择保存位置');
+}
+
 window.onload = () => {
     setTimeout(() => showTip('(●\'◡\'●)ﾉ 欢迎回来！^_^o'), 1000);
     updateBlogTime();
+    initVisit();
+    loadNote();
+};
+// 打开独立笔记页
+function openNotePage(){
+    window.location.href = "note.html"; // 跳转到新页面
+}
+
+// 加载预览
+function loadNotePreview(){
+    let note = localStorage.getItem('myBlogNote') || '';
+    let preview = note.substring(0, 200) + (note.length>200 ? '...' : '');
+    document.getElementById('notePreview').innerText = preview || '（暂无笔记）';
+}
+
+// 在 window.onload 里加上执行
+window.onload = () => {
+    setTimeout(() => showTip('(●\'◡\'●)ﾉ 欢迎回来！^_^o'), 1000);
+    updateBlogTime();
+    initVisit();
+    loadNotePreview(); // 加载预览
 };
 </script>
 
